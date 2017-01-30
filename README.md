@@ -12,6 +12,20 @@ WP-CLI tips and tricks
 ### Mark all pending comments as spam.
 `wp comment spam $(wp comment list --status=hold --format=ids)`
 
+## Media
+
+### Regenerate all thumbnails that have attachment IDs between 1000 and 2000.
+`seq 1000 2000 | xargs wp media regenerate`
+
+### Regenerate all thumbnails that are set as Featured Image in pages.
+`wp media regenerate $(wp post list --post_type=page --format=ids | xargs -d ' ' -I % wp db query 'SELECT meta_value FROM wp_postmeta WHERE post_id=% AND meta_key="_thumbnail_id"' --skip-column-names)`
+
+### Import all jpgs in the current user's "Pictures" folder.
+`wp media import ~/Pictures/**\/*.jpg`
+
+### Import a local image and set it to be the post thumbnail for a post.
+`wp media import ~/Pictures/himalaya.jpg --post_id=123 --title="Himalaya range" --featured_image`
+
 ## Custom CSS
 
 ### Remove Custom CSS Post of all themes.
