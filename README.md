@@ -37,3 +37,10 @@ WP-CLI tips and tricks
 ##### Remove Custom CSS Post of currently active theme.
 `wp post delete $(wp post list --name=$(wp option get stylesheet) --post_type=custom_css --format=ids)`
 
+### Options
+
+##### Delete all options begining with "theme_mods_".
+`wp option list --search="theme_mods_*" --field=option_name | xargs -I % wp option delete %`
+
+##### Delete all widget instances.
+`wp option list --search="widget_*" --field=option_name | xargs -I % wp option delete %`
