@@ -44,3 +44,11 @@ WP-CLI tips and tricks
 
 ##### Delete all widget instances.
 `wp option list --search="widget_*" --field=option_name | xargs -I % wp option delete %`
+
+### Widgets
+
+##### Delete all inactive widgets.
+`wp widget delete $(wp widget list wp_inactive_widgets --format=ids)`
+
+##### Move all widgets from "sidebar-1" to "sidebar-2".
+`wp widget list sidebar-1 --format=ids | xargs -d ' ' -I % wp widget move % --sidebar-id=sidebar-2`
