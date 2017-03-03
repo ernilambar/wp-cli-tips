@@ -50,5 +50,5 @@ WP-CLI tips and tricks
 ##### Delete all inactive widgets.
 `wp widget delete $(wp widget list wp_inactive_widgets --format=ids)`
 
-##### Move all widgets from "sidebar-1" to "sidebar-2".
-`wp widget list sidebar-1 --format=ids | xargs -d ' ' -I % wp widget move % --sidebar-id=sidebar-2`
+##### Move all widgets from "sidebar-1" to "sidebar-2" maintaining widget order.
+`printf "%s\n" $(wp widget list sidebar-1 --format=ids)|tac | xargs -I % wp widget move % --sidebar-id=sidebar-2`
