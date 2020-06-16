@@ -6,6 +6,9 @@ WP-CLI tips and tricks
 ##### Empty trash.
 `wp comment delete $(wp comment list --status=trash --format=ids)`
 
+##### Approve all pending comments.
+`wp comment approve $(wp comment list --status=hold --format=ids)`
+
 ##### Delete all spam comments.
 `wp comment delete $(wp comment list --status=spam --format=ids)`
 
