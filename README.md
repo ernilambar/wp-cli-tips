@@ -42,6 +42,9 @@ WP-CLI tips and tricks
 
 ### Options
 
+##### Disable avatar.
+`wp option set show_avatars 0`
+
 ##### Delete all options begining with "theme_mods_".
 `wp option list --search="theme_mods_*" --field=option_name | xargs -I % wp option delete %`
 
