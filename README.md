@@ -21,7 +21,7 @@ WP-CLI tips and tricks
 `seq 1000 2000 | xargs wp media regenerate`
 
 ##### Regenerate all thumbnails that are set as Featured Image in pages.
-`wp media regenerate $(wp post list --post_type=page --format=ids | xargs -d ' ' -I % wp db query 'SELECT meta_value FROM wp_postmeta WHERE post_id=% AND meta_key="_thumbnail_id"' --skip-column-names)`
+`wp media regenerate --yes $(wp post list --post_type=page --post_status=publish --format=ids | xargs -d ' ' -I % wp db query 'SELECT meta_value FROM wp_postmeta WHERE post_id=% AND meta_key="_thumbnail_id"' --skip-column-names)`
 
 ##### Import all jpgs in the current user's "Pictures" folder.
 `wp media import ~/Pictures/**\/*.jpg`
